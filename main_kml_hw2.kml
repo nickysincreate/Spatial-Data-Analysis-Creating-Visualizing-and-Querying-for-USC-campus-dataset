@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Nine coordinates</name>
+    <visibility>0</visibility>
+    <open>1</open>
+    <Placemark>
+      <name>Home</name>
+      <Point>
+        <coordinates>-118.2803374,34.0283582,0</coordinates>
+      </Point>
+    </Placemark>
+   <Placemark>
+      <name>St Vincent</name>
+      <Point>
+        <coordinates>-118.2764,34.0289,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Galen</name>
+      <Point>
+        <coordinates>-118.27975,34.02127,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Marshall</name>
+      <Point>
+        <coordinates>-118.2858,34.0188,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Lyon Center</name>
+      <Point>
+        <coordinates>-118.28831,34.02439,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>SGM</name>
+      <Point>
+        <coordinates>-118.2890857,34.0210824,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tommy Trojan</name>
+      <Point>
+        <coordinates>-118.28599229999999,34.0206485,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Doheny</name>
+      <Point>
+        <coordinates>-118.28395,34.02023,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Leavey</name>
+      <Point>
+        <coordinates>-118.28297339999999,34.021642299999996,0</coordinates>
+      </Point>
+    </Placemark>
+<Style id="yellowLineGreenPoly">
+      <LineStyle>
+        <color>7f00ffff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7f00ff00</color>
+      </PolyStyle>
+    </Style>
+<Placemark>
+      <name>Absolute Extruded</name>
+      <description>Transparent green wall with yellow outlines</description>
+      <styleUrl>#yellowLineGreenPoly</styleUrl>
+      <LineString>
+        <extrude>1</extrude>
+        <tessellate>1</tessellate>
+        <coordinates> 
+		-118.2803374,34.0283582
+		-118.2764,34.0289
+		-118.2803374,34.0283582
+		-118.27975,34.02127
+		-118.2803374,34.0283582
+		-118.28297339999999,34.021642299999996
+        </coordinates>
+      </LineString>
+ </Placemark>
+<Style id="yellowLineGreenPoly">
+      <LineStyle>
+        <color>7f00ffff</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>7f00ff00</color>
+      </PolyStyle>
+    </Style>
+<Placemark>
+      <name>Absolute Extruded</name>
+      <description>Transparent green wall with yellow outlines</description>
+      <styleUrl>#yellowLineGreenPoly</styleUrl>
+	<Polygon>
+	   <outerBoundaryIs><LinearRing>
+        <coordinates> 
+	-118.2858,34.0188
+	-118.27975,34.02127
+	-118.2764,34.0289
+	-118.2803374,34.0283582
+	-118.28831,34.02439
+	-118.2890857,34.0210824
+	-118.2858,34.0188
+        </coordinates>
+       </LinearRing></outerBoundaryIs>
+ 	</Polygon>
+ </Placemark>
+ </Document>
+</kml>

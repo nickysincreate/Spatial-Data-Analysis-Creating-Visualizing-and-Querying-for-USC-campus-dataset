@@ -1,0 +1,62 @@
+Table creation code:
+
+create table Geography(
+id integer primary key,
+Location_name varchar(50),
+Latitude float,
+Longitude float,
+Location MDSYS.SDO_GEOMETRY);
+
+INSERT INTO Geography values (1,'Home', 34.0283582, -118.2803374, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.2803374, 34.0283582, NULL), NULL, NULL));
+
+INSERT INTO Geography values (2,'St Vincent', 34.0289,-118.2764, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.2764, 34.0289, NULL), NULL, NULL));
+
+INSERT INTO Geography values (3,'Galen', 34.02127, -118.27975, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.27975, 34.02127, NULL), NULL, NULL));
+
+INSERT INTO Geography values (4,'Marshall', 34.0188, -118.2858, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.2858, 34.0188, NULL), NULL, NULL));
+
+INSERT INTO Geography values (5,'Lyon Center', 34.02439, -118.28831, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.28831, 34.02439, NULL), NULL, NULL));
+
+INSERT INTO Geography values (6,'SGM ', 34.0210824, -118.2890857, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.2890857, 34.0210824, NULL), NULL, NULL));
+
+INSERT INTO Geography values (7,'Tommy Trojan', 34.0206485, -118.28599229999999, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.28599229999999, 34.0206485, NULL), NULL, NULL));
+
+INSERT INTO Geography values (8,'Doheny', 34.02023, -118.28395, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.28395, 34.02023, NULL), NULL, NULL));
+
+INSERT INTO Geography values (9,'Leavey', 34.021642299999996, -118.28297339999999, 
+MDSYS.SDO_GEOMETRY (2001, 8307, MDSYS.SDO_POINT_TYPE (-118.28297339999999, 34.021642299999996, NULL), NULL, NULL));
+
+Question 4:
+Query for convex hull:
+
+SELECT SDO_AGGR_CONVEXHULL(MDSYS.SDOAGGRTYPE(Location,0.005)) from Geography;
+
+Query for 3 nearest neighbors:
+
+INSERT INTO user_sdo_geom_metadata
+(TABLE_NAME,
+COLUMN_NAME,
+DIMINFO,
+SRID)
+VALUES (
+'Geography','Location',
+SDO_DIM_ARRAY(
+SDO_DIM_ELEMENT('X', 0, 20, 0.005),
+SDO_DIM_ELEMENT('Y', 0, 20, 0.005)
+      ),
+8307);
+
+CREATE INDEX geo_index on Geography(Location) INDEXTYPE IS MDSYS.SPATIAL_INDEX;
+
+select g.Location_name,g.Longitude,g.Latitude from Geography g where sdo_nn(g.Location,mdsys.sdo_geometry
+(2001, 8307, sdo_point_type(-118.2803374,34.0283582,null),null,null),
+'sdo_num_res=4 unit=mile')='TRUE' and G.id!=1;
+
